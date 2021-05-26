@@ -3,7 +3,6 @@ using System.Net;
 using CongestionTaxCalculator.Api.Models;
 using CongestionTaxCalculator.Service;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace CongestionTaxCalculator.Api.Controllers
@@ -27,11 +26,11 @@ namespace CongestionTaxCalculator.Api.Controllers
             {
                 var totalFee = await _calculateTaxService.CalculateTax(request.VehicleType.Value, request.PassageDateTimes);
 
-                return Ok(new CongestionTaxCalculatorResponse { Fee = totalFee });
+                return Ok(new CongestionTaxCalculatorResponse {Fee = totalFee});
             }
             catch (Exception e) //TODO Could be improved with more specific errors.
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e);
+                return StatusCode((int) HttpStatusCode.InternalServerError, e);
             }
         }
     }

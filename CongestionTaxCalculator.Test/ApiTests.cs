@@ -11,11 +11,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CongestionTaxCalculator.Test
 {
     /// <summary>
-    /// As most logic is decoupled from Controllers, its easier and better to just test the services separatly instead.
+    /// As most logic is decoupled from Controllers, its easier and better to just test the services separately instead.
     /// However I added this to give a general idea on how the API works.
     /// </summary>
     [TestClass]
-    public class ApiPost
+    public class ApiTests
     {
         [TestMethod]
         public async Task TestPost()
