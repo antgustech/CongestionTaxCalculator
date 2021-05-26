@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nager.Date" Version="1.29.0" />
+    <PackageReference Include="NordicHolidays.NET" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CongestionTaxCalculator.Common\CongestionTaxCalculator.Common.csproj" />
+    <ProjectReference Include="..\CongestionTaxCalculator.Storage\CongestionTaxCalculator.Storage.csproj" />
+  </ItemGroup>
+
+</Project>
