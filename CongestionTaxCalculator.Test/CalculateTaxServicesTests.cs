@@ -101,13 +101,12 @@ namespace CongestionTaxCalculator.Test
         }
 
         [TestMethod]
-        public async Task ReturnNoFeeForExcemptVehicleType()
+        public async Task ReturnNoFeeForExemptVehicleType()
         {
             var vehicleType = VehicleType.Bus;
             var passageDateTimes = new[]
             {
                 new DateTime(2013, 02, 08, 6, 0, 0),
-
             };
 
             var result = await _calculateTaxService.CalculateTax(vehicleType, passageDateTimes);
@@ -139,6 +138,19 @@ namespace CongestionTaxCalculator.Test
             Assert.AreEqual(60, result);
         }
 
+        [TestMethod]
+        public async Task ReturnHighestFeeForTwoWithinOneHour()
+        {
+            var vehicleType = VehicleType.Car;
+            var passageDateTimes = new[]
+            {
+                new DateTime(2013, 02, 08, 15, 00, 0),
+                new DateTime(2013, 02, 08, 15, 30, 0),
+            };
 
+            var result = await _calculateTaxService.CalculateTax(vehicleType, passageDateTimes);
+
+            Assert.AreEqual(18, result);
+        }
     }
 }

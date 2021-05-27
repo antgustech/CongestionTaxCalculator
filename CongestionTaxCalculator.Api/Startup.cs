@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CongestionTaxCalculator.Service;
 using CongestionTaxCalculator.Storage;
+using Microsoft.OpenApi.Models;
 
 namespace CongestionTaxCalculator.Api
 {
@@ -20,7 +21,8 @@ namespace CongestionTaxCalculator.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new Converters.JsonDateTimeConverter()));
+            services.AddControllers().AddJsonOptions(options =>
+                options.JsonSerializerOptions.Converters.Add(new Converters.JsonDateTimeConverter()));
             services.AddSingleton<ICalculateTaxService, CalculateTaxService>();
             services.AddSingleton<ITaxRules, TaxRulesLocal>();
 
@@ -30,6 +32,18 @@ namespace CongestionTaxCalculator.Api
                 config.AssumeDefaultVersionWhenUnspecified = true;
                 config.ReportApiVersions = true;
             });
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Congestion Tax Calculator",
+                        Version = "v1",
+                        Description =
+                            "Api for calculating tax"
+                    });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,6 +52,14 @@ namespace CongestionTaxCalculator.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger(x => x.SerializeAsV2 = true);
+
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                x.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 

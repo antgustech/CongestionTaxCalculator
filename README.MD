@@ -1,11 +1,8 @@
 # CongestionTaxCalculator
-
 CongestionTaxCalculator is a system for configurating and providing congestion tax rates for Gothenburg traffic.
 
 ## Installation
-
 Clone the project and open it with Visual Studio, it should automatically download the dependencies.
-
 
 ## Usage
 Launch the API by starting the CongestionTaxCalculator.API service. You can then make requests with your client of choice, for example Postman like this:
@@ -24,3 +21,11 @@ https://localhost:44341/calculate/tax?api-version=1.0
 }
 
 ```
+
+Or use your webbrowser and navigate to the index where the swagger is hosted:
+
+```
+https://localhost:44341/index.html
+```
+
+You can also run the provided unit tests in the ```CongestionTaxCalculator.Test``` project

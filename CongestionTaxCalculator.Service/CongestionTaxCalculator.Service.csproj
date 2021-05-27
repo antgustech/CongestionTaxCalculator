@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="Nager.Date" Version="1.29.0" />
-    <PackageReference Include="NordicHolidays.NET" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,4 +8,3 @@ This document goes through some questions and thoughts on improvements that coul
 4. Error handling could be improved with better error messages to the client
 5. Logging could be enabled.
 6. Some more optimzations could be done for the usage of the storage module. As of now, stored values are read on every request, an improvement could be to cache it.
-7. More documentation
